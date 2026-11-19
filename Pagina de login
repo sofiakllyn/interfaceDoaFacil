@@ -1,0 +1,188 @@
+/* Doa Fácil – Login (desktop 1440×960 no Figma) */
+
+:root {
+  --tinta: #10251b;
+  --verde: #00a85a;
+  --verde-escuro: #008f4c;
+  --verde-claro: #8ad6af;
+  --fundo-marca: #f0fbf5;
+  --borda: #c7d4cd;
+  --texto-suave: #6a7870;
+  --fonte: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  color: var(--tinta);
+  background: #fff;
+  line-height: 1.4;
+}
+
+p, h1 { margin: 0; }
+
+:focus-visible { outline: 2px solid var(--verde); outline-offset: 2px; }
+
+/* Estrutura: painel da marca (480px) + área do formulário */
+.pagina {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Painel da marca ---------- */
+.painel-marca {
+  background: var(--fundo-marca);
+  padding: 46px 56px;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--tinta);
+  text-decoration: none;
+}
+.logo span { color: var(--verde); }
+
+.chamada { margin-top: 223px; } /* barra verde a 311px do topo, como no Figma */
+
+.detalhe {
+  display: block;
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--verde);
+  margin-bottom: 21px;
+}
+
+.chamada p {
+  font-size: 46px;
+  font-weight: 700;
+  max-width: 375px;
+}
+
+/* ---------- Área do formulário ---------- */
+.area-formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.coluna { width: 100%; max-width: 480px; }
+
+.acesso {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.acesso h1 { font-size: 32px; font-weight: 700; }
+
+.campo { display: flex; flex-direction: column; gap: 8px; }
+
+.campo label { font-size: 14px; font-weight: 500; }
+
+.campo input {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--tinta);
+  font: 400 16px var(--fonte);
+}
+.campo input::placeholder { color: var(--texto-suave); opacity: 1; }
+
+/* Estado ativo do campo: borda verde de 1,5px */
+.campo input:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 0.5px var(--verde);
+}
+
+/* Campo de senha com ícone */
+.campo-senha { position: relative; }
+.campo-senha input { padding-right: 52px; }
+
+.ocultar {
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+.ocultar[aria-pressed="true"] .risco { display: none; }
+
+.esqueci {
+  align-self: flex-end;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--verde);
+  text-decoration: underline;
+}
+
+/* Botões */
+.btn {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  font: 600 16px var(--fonte);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-cheio {
+  height: 50px;
+  border: 0;
+  background: var(--verde);
+  color: #fff;
+}
+.btn-cheio:hover { background: var(--verde-escuro); }
+
+.btn-contorno {
+  padding: 11.8px 0;
+  border: 1px solid var(--verde-claro);
+  background: #fff;
+  color: var(--verde);
+}
+.btn-contorno:hover { background: var(--fundo-marca); }
+
+/* Cadastro */
+.cadastro {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cadastro p {
+  font-size: 14px;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 900px) {
+  .pagina { grid-template-columns: 1fr; min-height: 0; }
+
+  .painel-marca { padding: 24px; }
+  .chamada { margin-top: 32px; }
+  .chamada p { font-size: 30px; }
+  .detalhe { margin-bottom: 14px; }
+
+  .area-formulario { padding: 32px 24px 48px; align-items: flex-start; }
+  .acesso h1 { font-size: 28px; }
+  .cadastro { margin-top: 40px; }
+}
